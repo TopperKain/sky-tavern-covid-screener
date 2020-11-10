@@ -11,7 +11,7 @@ Vue.createApp({
     methods: {
       clickSubmit() {
         const urlParams = new URLSearchParams(location.search);
-        const personId = urlParams.get("personId");
+        const personId = urlParams.get("contactId");
         const dayId = urlParams.get("dayId");
         const msg = {
           "personId": personId,
