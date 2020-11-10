@@ -27,13 +27,22 @@ module.exports = async function (context, req) {
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }
-        })
-    }
+            })
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: {
+                text: httpResult.text
+            }
+        };
 
-    context.res = {
-        // status: 200, /* Defaults to 200 */
-        body: {
-            text: httpResult.text
-        }
-    };
+        return
+    }
+    else{
+        context.res = {
+            body:{
+                text: "Misformed payload"
+            }
+        },
+        status = 500
+    }
 }
