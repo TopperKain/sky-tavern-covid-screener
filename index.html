@@ -2,16 +2,120 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
   <title>Vanilla JavaScript App</title>
+
 </head>
 
 <body>
+
   <main>
-    <h1>Vanilla JavaScript App</h1>
+    <div id="v-form-mountpoint" class="container-fluid">
+      <div class="row">
+        <div class="col-lg">
+          <h1>COVID-19 Symptom Checker</h1>
+          <p>In the past 48 hours, have you, your children, or any other members of you party had <em>NEW</em> or
+            <em>WORSENING</em>
+            incidents
+            of any of the following symptoms:</p>
+          <ul>
+            <li> A fever of 100.4F or higher or felt feverish</li>
+            <li> Cough, shortness of breath or difficulty breathing</li>
+            <li> Sore throat</li>
+            <li> Muscle or body aches</li>
+            <li> Chills</li>
+            <li> Nausea, vomiting or diarrhea</li>
+            <li> Change in smell or taste?</li>
+          </ul>
+
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-info active" style="margin-left: 1px;">
+              <input type="radio" name="options" id="SymptomYes" autocomplete="off" value="Yes" v-model="symptomsRadio">
+              Yes
+            </label>
+            <label class="btn btn-info" style="margin-left: 1px;">
+              <input type="radio" name="options" id="SymptomNo" autocomplete="off " value="No" v-model="symptomsRadio">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg">
+          <br/>
+          <p>In the past 14 days, have you, your children, or anyone else in your party had close contact with someone
+            who
+            you
+            know was diagnosed with COVID-19,
+            or have you received instruction from a public health or medical professional to self-monitor,
+            self-isolate,
+            or
+            self-quarantine because of concerns
+            about COVID-19 infection? This includes you receiving a COVID-19 test recommended by a medical
+            professional,
+            with
+            results still pending.?</p>
+
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-info" style="margin-left: 1px;">
+              <input type="radio" name="options" id="CloseContactYes" autocomplete="off" value="Yes"
+                v-model="closeContactRadio"> Yes
+            </label>
+            <label class="btn btn-info" style="margin-left: 1px;">
+              <input type="radio" name="options" id="CloseContactYes" autocomplete="off " value="No"
+                v-model="closeContactRadio"> No
+            </label>
+          </div>
+          <hr />
+          <br />
+
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg">
+          <button class="btn btn-primary" @click="clickSubmit"> Submit</button>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg">
+          <div id="message">{{ resultMessage }}</div>
+
+          <br />
+          <div id="submitmessage">{{ submitMessage }}
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+
+  <!--<script>
+    (async function() {
+      let { text } = await( await fetch(`/api/SurveySubmit`)).json();
+      document.querySelector('#name').textContent = text;
+    }())
+  </script>-->
+  <!-- development version, includes helpful console warnings -->
+  <script src="https://unpkg.com/vue@3.0.2"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+  <script src="/js/index.js"></script>
+
 </body>
 
 </html>
