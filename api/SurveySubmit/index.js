@@ -11,7 +11,7 @@ module.exports = async function (context, req) {
     const symptoms = req.body.symptoms;
     const closeContact = req.body.closeContact;
     const contentId = req.body.personId;
-    const goodToGo = !(closeContact || symptoms);
+    const goodToGo = !(closeContact.toLowerCase() === "yes" || symptoms.toLowerCase() === "yes");
 
     if (symptoms !== undefined && closeContact !== undefined && contentId !== undefined) {
         let res = {
